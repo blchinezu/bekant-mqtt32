@@ -16,8 +16,8 @@ Complete replacement controller for the IKEA Bekant height-adjustable desk with 
 - **UP/DOWN**: Hold to move desk. Release to stop
 - **UP+DOWN**: Hold both for 10 seconds to trigger recalibration (drives desk to bottom and resets)
 - **Memory**:
-  - Short press (< 5 seconds) recalls the stored position
-  - Long press (≥ 5 seconds) stores the current desk height
+  - Short press (< 5 seconds) recall stored position
+  - Long press (≥ 5 seconds) store current desk height
 - **Physical override**: Buttons can interrupt MQTT/HA commands for safety reasons
 - **Child Lock**: While enabled, all buttons are disabled. MQTT/HA control is still active
 
@@ -155,7 +155,7 @@ Here's my highly skilled professional grade schematic
 ![dashboard](images/homeassistant/dashboard.jpg)
 
 <details>
-<summary>Click to expand yaml</summary>
+<summary>Click to show YAML</summary>
 
 ```yaml
 type: grid
@@ -234,9 +234,16 @@ cards:
 ```
 </details>
 
+
+<details>
+<summary>Click to show entities</summary>
+
 ![controls](images/homeassistant/controls.jpg)
 ![configuration](images/homeassistant/configuration.jpg)
 ![sensors](images/homeassistant/sensors.jpg)
+![diagnostic](images/homeassistant/diagnostic.jpg)
+
+</details>
 
 ## Hardware Images
 
@@ -254,6 +261,7 @@ cards:
 ![controller-box](images/hardware/build/controller-box.jpg)
 ![buttons-box-without-caps](images/hardware/build/buttons-box-without-caps.jpg)
 ![buttons-box-open](images/hardware/build/buttons-box-open.jpg)
+
 </details>
 
 ## References
