@@ -30,7 +30,7 @@ This project is a smart controller for the IKEA Bekant height-adjustable desk. I
   - Height limits enforced to prevent damage
   - Smooth stop sequences for safe operation
 
-### Physical Buttons Behavior
+## Physical Buttons Behavior
 
 - **UP/DOWN buttons**: Hold to move desk up/down. Release to stop. Movement continues while held.
 - **Memory 1/2 buttons**:
@@ -60,6 +60,12 @@ This project is a smart controller for the IKEA Bekant height-adjustable desk. I
 - 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.png)
 
 **Note:** Physical buttons are optional. The controller can be used entirely through MQTT or Home Assistant.
+
+## Schematic
+
+Here's my highly skilled professional grade schematic
+
+![schematic](images/schematic.png)
 
 ## Configuration
 
