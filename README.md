@@ -7,7 +7,7 @@ Complete replacement controller for the IKEA Bekant motorized sit/stand desk wit
 This project is a smart controller for the IKEA Bekant height-adjustable desk. It completely replaces the original controller by communicating directly with the desk motors via the LIN (Local Interconnect Network) bus protocol.
 
 ![both-boxes](images/hardware/bulid/both-boxes.jpg)
-![dashboard](images/homeassistant/dashboard.png)
+![dashboard](images/homeassistant/dashboard.jpg)
 
 ## Features
 
@@ -166,7 +166,7 @@ mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 
 ## Home Assistant Screenshots
 
-![dashboard](images/homeassistant/dashboard.png)
+![dashboard](images/homeassistant/dashboard.jpg)
 ![controls](images/homeassistant/controls.png)
 ![configuration](images/homeassistant/configuration.png)
 ![sensors](images/homeassistant/sensors.png)
