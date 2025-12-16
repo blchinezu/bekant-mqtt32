@@ -1,55 +1,34 @@
 # IKEA Bekant ESP32 MQTT Controller
 
-Complete replacement controller for the IKEA Bekant motorized sit/stand desk with ESP32, MQTT and Home Assistant integration.
-
-## Overview
-
-This project is a smart controller for the IKEA Bekant height-adjustable desk. It completely replaces the original controller by communicating directly with the desk motors via the LIN (Local Interconnect Network) bus protocol.
+Complete replacement controller for the IKEA Bekant height-adjustable desk with ESP32, MQTT and Home Assistant integration.
 
 ![both-boxes](images/hardware/build/both-boxes.jpg)
-![dashboard](images/homeassistant/dashboard.jpg)
 
 ## Features
 
 - **Home Assistant** Auto Discovery
-- Full control via **MQTT** topics
-- **Physical buttons**
-  - Up
-  - Down
-  - Memory 1
-  - Memory 2
-- **Virtual controls**
-  - Up
-  - Down
-  - Stop
-  - Memory 1-4
-  - Recalibrate
-  - Restart
-  - Child Lock
-  - Min/Max Height
+- **MQTT** Control
+- **Physical buttons**: Up, Down, Memory 1, Memory 2
+- **Virtual controls**: Up, Down, Stop, Memory 1-4, Recalibrate, Restart, Child Lock, Min/Max Height
 
-## Physical Buttons Behavior
+## Buttons Behavior
 
-- **UP/DOWN**
-  - Hold to move desk up/down. Release to stop.
-- **Both UP+DOWN buttons**
-  - Hold both buttons for 10 seconds to trigger recalibration (drives desk to bottom and resets)
-- **Memory 1/2 buttons**
-  - **Short press** (< 5 seconds): Recalls the stored position for that memory slot
-  - **Long press** (≥ 5 seconds): Stores the current desk height to that memory slot
-- **Physical override**
-  - Physical buttons can interrupt and override MQTT commands. When a physical button is pressed during an MQTT-controlled movement, the desk will smoothly stop at the current position.
-- **Child Lock**
-  - While child lock is enabled, all physical buttons are disabled. MQTT/HA control is still active.
+- **UP/DOWN**: Hold to move desk. Release to stop
+- **UP+DOWN**: Hold both for 10 seconds to trigger recalibration (drives desk to bottom and resets)
+- **Memory**:
+  - Short press (< 5 seconds) recalls the stored position
+  - Long press (≥ 5 seconds) stores the current desk height
+- **Physical override**: Buttons can interrupt MQTT/HA commands for safety reasons
+- **Child Lock**: While enabled, all buttons are disabled. MQTT/HA control is still active
 
 ## Configuration
 
-Before building and uploading the firmware, you should configure the following variables in `bekant-mqtt32.ino`:
+Change the following variables in `bekant-mqtt32.ino` before flashing your ESP:
 
 ```cpp
-const char* ssid = "your_wifi_ssid";
-const char* password = "your_wifi_password";
-const char* mqtt_server = "your_mqtt_server_ip";
+const char* ssid = "YOUR_WIFI_SSID";
+const char* password = "YOUR_WIFI_PASSWORD";
+const char* mqtt_server = "YOUR_MQTT_SERVER_IP";
 const int mqtt_port = 1883;
 const char* mqtt_client_id = "bekant_desk";
 ```
@@ -58,8 +37,6 @@ const char* mqtt_client_id = "bekant_desk";
 
 <details>
 <summary>Click to expand</summary>
-
-If you're not using Home Assistant, you can control the desk directly via MQTT using the following topics:
 
 ### State Topics
 - `bekant/height` - Raw encoder position (integer)
@@ -100,7 +77,7 @@ If you're not using Home Assistant, you can control the desk directly via MQTT u
 - `bekant/memory4_recall` - Recall Memory 4 position (send `PRESS`)
 - `bekant/restart` - Restart ESP32 (send `RESTART`)
 
-### Example MQTT Commands
+### Examples
 
 ```bash
 # Move desk up
@@ -136,66 +113,49 @@ mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 
 **Required Components**
 
-- 1x MCP2003B LIN Transceiver [[electronic-mag.ro]](https://www.electronic-mag.ro/interfete-circuite-integrate-altele/192710-ic-interfata-emitator-receptor-20kbps-55-30vdc-smd-so8.html) [[image]](images/hardware/requirements/mcp2003b.jpg)
-- 1x SOP8 to DIP8 PCB [[aliexpress.com]](https://www.aliexpress.com/item/1891086490.html) [[image]](images/hardware/requirements/sop8-to-dip8-pcb.jpg)
-- 1x ESP32 D1 Mini [[aliexpress.com]](https://www.aliexpress.com/item/4000650379995.html) [[image]](images/hardware/requirements/esp32-d1-mini.jpg)
-- 1x Buck Converter 29V to 12V (LM2596HVS) [[aliexpress.com]](https://www.aliexpress.com/item/1005009041730920.html) [[image]](images/hardware/requirements/buck-converter-12v.jpg)
-- 1x Buck Converter 12V to 5V [[aliexpress.com]](https://www.aliexpress.com/item/32826540392.html) [[image]](images/hardware/requirements/buck-converter-5v.jpg)
-- 1x Resistor 1kΩ 0.25W [[aliexpress.com]](https://www.aliexpress.com/item/32952657927.html)
-- 3x Resistor 2.2kΩ 0.25W [[aliexpress.com]](https://www.aliexpress.com/item/32952657927.html)
-- 1x PCB 70x50 [[aliexpress.com]](https://www.aliexpress.com/item/1005007977006793.html)
-- 4x 5m 24AWG wires (red, yellow, green, black) [[aliexpress.com]](https://www.aliexpress.com/item/1005004336218242.html)
-- 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.jpg)
+- 1x MCP2003B LIN Transceiver ([electronic-mag.ro](https://www.electronic-mag.ro/interfete-circuite-integrate-altele/192710-ic-interfata-emitator-receptor-20kbps-55-30vdc-smd-so8.html) / [image](images/hardware/requirements/mcp2003b.jpg))
+- 1x SOP8 to DIP8 PCB ([aliexpress.com](https://www.aliexpress.com/item/1891086490.html) / [image](images/hardware/requirements/sop8-to-dip8-pcb.jpg))
+- 1x ESP32 D1 Mini ([aliexpress.com](https://www.aliexpress.com/item/4000650379995.html) / [image](images/hardware/requirements/esp32-d1-mini.jpg))
+- 1x Buck Converter 29V to 12V (LM2596HVS) ([aliexpress.com](https://www.aliexpress.com/item/1005009041730920.html) / [image](images/hardware/requirements/buck-converter-12v.jpg))
+- 1x Buck Converter 12V to 5V ([aliexpress.com](https://www.aliexpress.com/item/32826540392.html) / [image](images/hardware/requirements/buck-converter-5v.jpg))
+- 1x Resistor 1kΩ 0.25W ([aliexpress.com](https://www.aliexpress.com/item/32952657927.html))
+- 3x Resistor 2.2kΩ 0.25W ([aliexpress.com](https://www.aliexpress.com/item/32952657927.html))
+- 1x PCB 70x50 ([aliexpress.com](https://www.aliexpress.com/item/1005007977006793.html))
+- 4x 5m 24AWG wires (red, yellow, green, black) ([aliexpress.com](https://www.aliexpress.com/item/1005004336218242.html))
+- 1x Box 80x50x26 ([aliexpress.com](https://www.aliexpress.com/item/1005006374922625.html) / [image](images/hardware/requirements/box.jpg))
 
 **Optional Components (for physical buttons)**
 
-- 4x Momentary Buttons [[aliexpress.com]](https://www.aliexpress.com/item/1005009915408937.html) [[image]](images/hardware/requirements/buttons.jpg)
-- 4x 100nF ceramic capacitors [[aliexpress.com]](https://www.aliexpress.com/item/32971478818.html) [[image]](images/hardware/requirements/100nf-ceramic-capacitor.jpg)
-- 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.jpg)
+- 4x Momentary Buttons ([aliexpress.com](https://www.aliexpress.com/item/1005009915408937.html) / [image](images/hardware/requirements/buttons.jpg))
+- 4x 100nF ceramic capacitors ([aliexpress.com](https://www.aliexpress.com/item/32971478818.html) / [image](images/hardware/requirements/100nf-ceramic-capacitor.jpg))
+- 1x Box 80x50x26 ([aliexpress.com](https://www.aliexpress.com/item/1005006374922625.html) / [image](images/hardware/requirements/box.jpg))
 
-**Note on buttons**
+**Notes**
 
-Physical buttons are optional. The controller can be used entirely through MQTT or Home Assistant.
+- Physical buttons are optional. The controller can be used entirely through MQTT or Home Assistant.
+- I initially tried [this](https://www.aliexpress.com/item/1005006348310876.html) TJA1020 based transciever but didn't manage to make it work so I went with the known to work MCP2003B.
+- Buck converters don't have to be exactly the ones that I used, I just used what I already had.
 
-**Note on LIN transciever**
+**Button Interference**
 
-I initially tried [this](https://www.aliexpress.com/item/1005006348310876.html) TJA1020 based transciever but didn't manage to make it work so I went with the known to work MCP2003B.
-
-**Note on buck converters**
-
-They don't have to be exactly the ones that I used, I just used what I already had.
-
-## Button Interference
-
-I had pretty bad interference when reading the buttons because I used 50cm 24AWG wires between the controller box and the buttons box. That's why I implemented debouncing and added 100nF capacitors. There's one cap for each button. I soldered each leg of the cap to each leg of the button.
+I had pretty bad interference while reading the buttons because I used 50cm 24AWG wires between the controller box and the buttons box. That's why I implemented debouncing and added 100nF capacitors. There's one cap for each button. I soldered each leg of the cap to each leg of the button.
 
 I used overkill 250V film caps because that's what I had laying around but the 50V ceramic ones are more common and cheap to buy.
 
-If you go with a single box for both parts then you're probably not going to need capacitors. I went with two boxes in order to keep sensitive electronics as far away from the reach of children and liquids. Because shit happens.
+If you go with a single box for both parts then you're probably not going to need capacitors. I went with two boxes in order to keep sensitive electronics far from children and liquids.
 
 ## Schematic
-
-<details>
-<summary>Click to expand</summary>
 
 Here's my highly skilled professional grade schematic
 
 ![schematic](images/schematic.jpg)
-</details>
 
-## Home Assistant Screenshots
-
-![controls](images/homeassistant/controls.jpg)
-![configuration](images/homeassistant/configuration.jpg)
-![sensors](images/homeassistant/sensors.jpg)
-![diagnostic](images/homeassistant/diagnostic.jpg)
-
-## Home Assistant Dashboard
-
-<details>
-<summary>Click to expand</summary>
+## Home Assistant
 
 ![dashboard](images/homeassistant/dashboard.jpg)
+
+<details>
+<summary>Click to expand yaml</summary>
 
 ```yaml
 type: grid
@@ -274,14 +234,19 @@ cards:
 ```
 </details>
 
+![controls](images/homeassistant/controls.jpg)
+![configuration](images/homeassistant/configuration.jpg)
+![sensors](images/homeassistant/sensors.jpg)
+
 ## Hardware Images
 
-<details>
-<summary>Click to expand</summary>
-
 ![mounted-front](images/hardware/build/mounted-front.jpg)
-![mounted-under](images/hardware/build/mounted-under.jpg)
 ![board-above](images/hardware/build/board-above.jpg)
+
+<details>
+<summary>Click to show more</summary>
+
+![mounted-under](images/hardware/build/mounted-under.jpg)
 ![board-above-without-esp32](images/hardware/build/board-above-without-esp32.jpg)
 ![board-side](images/hardware/build/board-side.jpg)
 ![board-under](images/hardware/build/board-under.jpg)
