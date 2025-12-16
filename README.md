@@ -43,21 +43,21 @@ This project is a smart controller for the IKEA Bekant height-adjustable desk. I
 ## Hardware
 
 **Required Components:**
-- 1x MCP2003B LIN Transceiver [[electronic-mag.ro]](https://www.electronic-mag.ro/interfete-circuite-integrate-altele/192710-ic-interfata-emitator-receptor-20kbps-55-30vdc-smd-so8.html) [[image]](images/hardware/requirements/mcp2003b.png)
-- 1x SOP8 to DIP8 PCB [[aliexpress.com]](https://www.aliexpress.com/item/1891086490.html) [[image]](images/hardware/requirements/sop8-to-dip8-pcb.png)
-- 1x ESP32 D1 Mini [[aliexpress.com]](https://www.aliexpress.com/item/4000650379995.html) [[image]](images/hardware/requirements/esp32-d1-mini.png)
-- 1x Buck Converter 29V to 12V (LM2596HVS) [[aliexpress.com]](https://www.aliexpress.com/item/1005009041730920.html) [[image]](images/hardware/requirements/buck-converter-12v.png)
-- 1x Buck Converter 12V to 5V [[aliexpress.com]](https://www.aliexpress.com/item/32826540392.html) [[image]](images/hardware/requirements/buck-converter-5v.png)
+- 1x MCP2003B LIN Transceiver [[electronic-mag.ro]](https://www.electronic-mag.ro/interfete-circuite-integrate-altele/192710-ic-interfata-emitator-receptor-20kbps-55-30vdc-smd-so8.html) [[image]](images/hardware/requirements/mcp2003b.jpg)
+- 1x SOP8 to DIP8 PCB [[aliexpress.com]](https://www.aliexpress.com/item/1891086490.html) [[image]](images/hardware/requirements/sop8-to-dip8-pcb.jpg)
+- 1x ESP32 D1 Mini [[aliexpress.com]](https://www.aliexpress.com/item/4000650379995.html) [[image]](images/hardware/requirements/esp32-d1-mini.jpg)
+- 1x Buck Converter 29V to 12V (LM2596HVS) [[aliexpress.com]](https://www.aliexpress.com/item/1005009041730920.html) [[image]](images/hardware/requirements/buck-converter-12v.jpg)
+- 1x Buck Converter 12V to 5V [[aliexpress.com]](https://www.aliexpress.com/item/32826540392.html) [[image]](images/hardware/requirements/buck-converter-5v.jpg)
 - 1x Resistor 1kΩ 0.25W [[aliexpress.com]](https://www.aliexpress.com/item/32952657927.html)
 - 3x Resistor 2.2kΩ 0.25W [[aliexpress.com]](https://www.aliexpress.com/item/32952657927.html)
 - 1x PCB 70x50 [[aliexpress.com]](https://www.aliexpress.com/item/1005007977006793.html)
 - 4x 5m 24AWG wires (red, yellow, green, black) [[aliexpress.com]](https://www.aliexpress.com/item/1005004336218242.html)
-- 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.png)
+- 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.jpg)
 
 **Optional Components (for physical buttons):**
-- 4x Momentary Buttons [[aliexpress.com]](https://www.aliexpress.com/item/1005009915408937.html) [[image]](images/hardware/requirements/buttons.png)
-- 4x 100nF ceramic capacitors [[aliexpress.com]](https://www.aliexpress.com/item/32971478818.html) [[image]](images/hardware/requirements/100nf-ceramic-capacitor.png)
-- 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.png)
+- 4x Momentary Buttons [[aliexpress.com]](https://www.aliexpress.com/item/1005009915408937.html) [[image]](images/hardware/requirements/buttons.jpg)
+- 4x 100nF ceramic capacitors [[aliexpress.com]](https://www.aliexpress.com/item/32971478818.html) [[image]](images/hardware/requirements/100nf-ceramic-capacitor.jpg)
+- 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.jpg)
 
 **Note on buttons:**
 Physical buttons are optional. The controller can be used entirely through MQTT or Home Assistant.
@@ -72,7 +72,7 @@ They don't have to be exactly the ones that I used, I just used what I already h
 
 Here's my highly skilled professional grade schematic
 
-![schematic](images/schematic.png)
+![schematic](images/schematic.jpg)
 
 ## Button Interference
 
@@ -172,10 +172,10 @@ mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 ## Home Assistant Screenshots
 
 ![dashboard](images/homeassistant/dashboard.jpg)
-![controls](images/homeassistant/controls.png)
-![configuration](images/homeassistant/configuration.png)
-![sensors](images/homeassistant/sensors.png)
-![diagnostic](images/homeassistant/diagnostic.png)
+![controls](images/homeassistant/controls.jpg)
+![configuration](images/homeassistant/configuration.jpg)
+![sensors](images/homeassistant/sensors.jpg)
+![diagnostic](images/homeassistant/diagnostic.jpg)
 
 ## Hardware Images
 
