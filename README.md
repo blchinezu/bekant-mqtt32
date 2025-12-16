@@ -11,34 +11,36 @@ This project is a smart controller for the IKEA Bekant height-adjustable desk. I
 
 ## Features
 
-- **Physical buttons**: Up, Down, Memory 1, Memory 2 (optional - see Hardware section)
-  - Memory buttons: Short press = recall position, Long press (5 seconds) = store current position
-  - Both UP+DOWN buttons held for 10 seconds = Recalibrate desk
-  - Physical buttons can override/interrupt MQTT commands
-- **MQTT**: Full control via MQTT topics (see MQTT Topics section below)
-- **Home Assistant**:
-  - Auto Discovery
-  - Up/Stop/Down controls
-  - Memory 1-4 set/recall (Memory 1-2 have physical buttons, Memory 3-4 are MQTT/HA only)
+- **Home Assistant** Auto Discovery
+- Full control via **MQTT** topics
+- **Physical buttons**
+  - Up
+  - Down
+  - Memory 1
+  - Memory 2
+- **Virtual controls**
+  - Up
+  - Down
+  - Stop
+  - Memory 1-4
   - Recalibrate
-  - Child Lock (disables physical buttons and stops desk movement)
   - Restart
-  - Min/Max height adjustable limits (default: 65-120cm)
-  - Current height sensor
-- **Safety**:
-  - Automatic ESP32 restart on LIN communication failures
-  - Height limits enforced to prevent damage
-  - Smooth stop sequences for safe operation
+  - Child Lock
+  - Min/Max Height
 
 ## Physical Buttons Behavior
 
-- **UP/DOWN buttons**: Hold to move desk up/down. Release to stop. Movement continues while held.
-- **Memory 1/2 buttons**:
+- **UP/DOWN**
+  - Hold to move desk up/down. Release to stop.
+- **Both UP+DOWN buttons**
+  - Hold both buttons for 10 seconds to trigger recalibration (drives desk to bottom and resets)
+- **Memory 1/2 buttons**
   - **Short press** (< 5 seconds): Recalls the stored position for that memory slot
   - **Long press** (≥ 5 seconds): Stores the current desk height to that memory slot
-- **Both UP+DOWN buttons**: Hold both buttons for 10 seconds to trigger recalibration (drives desk to bottom and resets)
-- **Physical override**: Physical buttons can interrupt and override MQTT commands. When a physical button is pressed during an MQTT-controlled movement, the desk will smoothly stop at the current position.
-- **Child Lock**: While child lock is enabled, all physical buttons are disabled. MQTT/HA control is still active.
+- **Physical override**
+  - Physical buttons can interrupt and override MQTT commands. When a physical button is pressed during an MQTT-controlled movement, the desk will smoothly stop at the current position.
+- **Child Lock**
+  - While child lock is enabled, all physical buttons are disabled. MQTT/HA control is still active.
 
 ## Configuration
 
@@ -132,7 +134,8 @@ mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 
 ## Hardware
 
-**Required Components:**
+**Required Components**
+
 - 1x MCP2003B LIN Transceiver [[electronic-mag.ro]](https://www.electronic-mag.ro/interfete-circuite-integrate-altele/192710-ic-interfata-emitator-receptor-20kbps-55-30vdc-smd-so8.html) [[image]](images/hardware/requirements/mcp2003b.jpg)
 - 1x SOP8 to DIP8 PCB [[aliexpress.com]](https://www.aliexpress.com/item/1891086490.html) [[image]](images/hardware/requirements/sop8-to-dip8-pcb.jpg)
 - 1x ESP32 D1 Mini [[aliexpress.com]](https://www.aliexpress.com/item/4000650379995.html) [[image]](images/hardware/requirements/esp32-d1-mini.jpg)
@@ -144,18 +147,22 @@ mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 - 4x 5m 24AWG wires (red, yellow, green, black) [[aliexpress.com]](https://www.aliexpress.com/item/1005004336218242.html)
 - 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.jpg)
 
-**Optional Components (for physical buttons):**
+**Optional Components (for physical buttons)**
+
 - 4x Momentary Buttons [[aliexpress.com]](https://www.aliexpress.com/item/1005009915408937.html) [[image]](images/hardware/requirements/buttons.jpg)
 - 4x 100nF ceramic capacitors [[aliexpress.com]](https://www.aliexpress.com/item/32971478818.html) [[image]](images/hardware/requirements/100nf-ceramic-capacitor.jpg)
 - 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.jpg)
 
-**Note on buttons:**
+**Note on buttons**
+
 Physical buttons are optional. The controller can be used entirely through MQTT or Home Assistant.
 
-**Note on LIN transciever:**
+**Note on LIN transciever**
+
 I initially tried [this](https://www.aliexpress.com/item/1005006348310876.html) TJA1020 based transciever but didn't manage to make it work so I went with the known to work MCP2003B.
 
-**Note on buck converters:**
+**Note on buck converters**
+
 They don't have to be exactly the ones that I used, I just used what I already had.
 
 ## Button Interference
@@ -183,10 +190,12 @@ Here's my highly skilled professional grade schematic
 ![sensors](images/homeassistant/sensors.jpg)
 ![diagnostic](images/homeassistant/diagnostic.jpg)
 
-## Home Assistant Section
+## Home Assistant Dashboard
 
 <details>
 <summary>Click to expand</summary>
+
+![dashboard](images/homeassistant/dashboard.jpg)
 
 ```yaml
 type: grid
