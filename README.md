@@ -52,8 +52,10 @@ const int mqtt_port = 1883;
 const char* mqtt_client_id = "bekant_desk";
 ```
 
+## MQTT Topics
+
 <details>
-<summary>## MQTT Topics</summary>
+<summary>Click to expand</summary>
 
 If you're not using Home Assistant, you can control the desk directly via MQTT using the following topics:
 
@@ -164,8 +166,10 @@ I used overkill 250V film caps because that's what I had laying around but the 5
 
 If you go with a single box for both parts then you're probably not going to need capacitors. I went with two boxes in order to keep sensitive electronics as far away from the reach of children and liquids. Because shit happens.
 
+## Schematic
+
 <details>
-<summary>## Schematic</summary>
+<summary>Click to expand</summary>
 
 Here's my highly skilled professional grade schematic
 
@@ -179,9 +183,11 @@ Here's my highly skilled professional grade schematic
 ![sensors](images/homeassistant/sensors.jpg)
 ![diagnostic](images/homeassistant/diagnostic.jpg)
 
+## Home Assistant Section
 
 <details>
-<summary>## Home Assistant Section</summary>
+<summary>Click to expand</summary>
+
 ```yaml
 type: grid
 cards:
@@ -259,9 +265,10 @@ cards:
 ```
 </details>
 
+## Hardware Images
 
 <details>
-<summary>## Hardware Images</summary>
+<summary>Click to expand</summary>
 
 ![mounted-front](images/hardware/build/mounted-front.jpg)
 ![mounted-under](images/hardware/build/mounted-under.jpg)
