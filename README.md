@@ -59,13 +59,26 @@ This project is a smart controller for the IKEA Bekant height-adjustable desk. I
 - 4x 100nF ceramic capacitors [[aliexpress.com]](https://www.aliexpress.com/item/32971478818.html) [[image]](images/hardware/requirements/100nf-ceramic-capacitor.png)
 - 1x Box 80x50x26 [[aliexpress.com]](https://www.aliexpress.com/item/1005006374922625.html) [[image]](images/hardware/requirements/box.png)
 
-**Note:** Physical buttons are optional. The controller can be used entirely through MQTT or Home Assistant.
+**Note on buttons:**
+Physical buttons are optional. The controller can be used entirely through MQTT or Home Assistant.
+
+**Note on LIN transciever:**
+I initially tried [this](https://www.aliexpress.com/item/1005006348310876.html) TJA1020 based transciever but didn't manage to make it work so I went with the known to work MCP2003B.
+
+**Note on buck converters:**
+They don't have to be exactly the ones that I used, I just used what I already had.
 
 ## Schematic
 
 Here's my highly skilled professional grade schematic
 
 ![schematic](images/schematic.png)
+
+## Button Interference
+
+Because I used 50cm 24AWG wires I had pretty bad interference when reading the buttons. That's why I implemented debouncing and added 100nF capacitors. There's one cap for each button. Solder each leg of the cap to each leg of the button.
+
+I used overkill 250V film caps because that's what I had laying around but the 50V ceramic ones are more common and cheap to buy.
 
 ## Configuration
 
