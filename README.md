@@ -169,6 +169,14 @@ mosquitto_pub -h 192.168.0.100 -t bekant/set_min_height -m "70"
 mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 ```
 
+## Home Assistant Screenshots
+
+![dashboard](images/homeassistant/dashboard.jpg)
+![controls](images/homeassistant/controls.png)
+![configuration](images/homeassistant/configuration.png)
+![sensors](images/homeassistant/sensors.png)
+![diagnostic](images/homeassistant/diagnostic.png)
+
 ## Hardware Images
 
 ![mounted-front](images/hardware/bulid/mounted-front.jpg)
@@ -182,14 +190,6 @@ mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 ![buttons-box-without-caps](images/hardware/bulid/buttons-box-without-caps.jpg)
 ![controller-box](images/hardware/bulid/controller-box.jpg)
 ![controller-box-open](images/hardware/bulid/controller-box-open.jpg)
-
-## Home Assistant Screenshots
-
-![dashboard](images/homeassistant/dashboard.jpg)
-![controls](images/homeassistant/controls.png)
-![configuration](images/homeassistant/configuration.png)
-![sensors](images/homeassistant/sensors.png)
-![diagnostic](images/homeassistant/diagnostic.png)
 
 ## References
 
