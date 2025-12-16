@@ -6,7 +6,7 @@ Complete replacement controller for the IKEA Bekant motorized sit/stand desk wit
 
 This project is a smart controller for the IKEA Bekant height-adjustable desk. It completely replaces the original controller by communicating directly with the desk motors via the LIN (Local Interconnect Network) bus protocol.
 
-![both-boxes](images/hardware/bulid/both-boxes.jpg)
+![both-boxes](images/hardware/build/both-boxes.jpg)
 ![dashboard](images/homeassistant/dashboard.jpg)
 
 ## Features
@@ -179,17 +179,17 @@ mosquitto_pub -h 192.168.0.100 -t bekant/command -m "reset"
 
 ## Hardware Images
 
-![mounted-front](images/hardware/bulid/mounted-front.jpg)
-![mounted-under](images/hardware/bulid/mounted-under.jpg)
-![board-above](images/hardware/bulid/board-above.jpg)
-![board-above-without-esp32](images/hardware/bulid/board-above-without-esp32.jpg)
-![board-side](images/hardware/bulid/board-side.jpg)
-![board-under](images/hardware/bulid/board-under.jpg)
-![both-boxes](images/hardware/bulid/both-boxes.jpg)
-![buttons-box-open](images/hardware/bulid/buttons-box-open.jpg)
-![buttons-box-without-caps](images/hardware/bulid/buttons-box-without-caps.jpg)
-![controller-box](images/hardware/bulid/controller-box.jpg)
-![controller-box-open](images/hardware/bulid/controller-box-open.jpg)
+![mounted-front](images/hardware/build/mounted-front.jpg)
+![mounted-under](images/hardware/build/mounted-under.jpg)
+![board-above](images/hardware/build/board-above.jpg)
+![board-above-without-esp32](images/hardware/build/board-above-without-esp32.jpg)
+![board-side](images/hardware/build/board-side.jpg)
+![board-under](images/hardware/build/board-under.jpg)
+![both-boxes](images/hardware/build/both-boxes.jpg)
+![buttons-box-open](images/hardware/build/buttons-box-open.jpg)
+![buttons-box-without-caps](images/hardware/build/buttons-box-without-caps.jpg)
+![controller-box](images/hardware/build/controller-box.jpg)
+![controller-box-open](images/hardware/build/controller-box-open.jpg)
 
 ## References
 
