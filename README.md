@@ -16,8 +16,8 @@ Complete replacement controller for the IKEA Bekant height-adjustable desk with 
 - **UP/DOWN**: Hold to move desk. Release to stop
 - **UP+DOWN**: Hold both for 10 seconds to trigger recalibration (drives desk to bottom and resets)
 - **Memory**:
-  - Short press (< 5 seconds) recall stored position
-  - Long press (≥ 5 seconds) store current desk height
+  - Short press (< 5 seconds) recall stored height
+  - Long press (≥ 5 seconds) store current height
 - **Physical override**: Buttons can interrupt MQTT/HA commands for safety reasons
 - **Child Lock**: While enabled, all buttons are disabled. MQTT/HA control is still active
 
